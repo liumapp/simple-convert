@@ -10,8 +10,10 @@ import com.liumapp.simple.convert.converter.Converter;
  * homepage http://www.liumapp.com
  * date 2019/4/12
  */
-public interface ConverterFactory {
+public abstract class ConverterFactory {
 
-    public Converter createConverter();
+    protected Converter converter;
+
+    public abstract Converter getInstance();
 
 }

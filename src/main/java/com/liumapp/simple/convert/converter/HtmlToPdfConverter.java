@@ -1,14 +1,14 @@
 package com.liumapp.simple.convert.converter;
 
 /**
- * file Converter.java
+ * file HtmlToPdfConverter.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2019/4/12
  */
-public abstract class Converter {
+public class HtmlToPdfConverter extends Converter {
 
 
 
