@@ -15,16 +15,16 @@ public class DocToPdfConverter extends BasicConverter {
 
     @Override
     public void convertByFilePath(String sourcePath, String destPath) {
-        super.convertByFilePath(sourcePath, destPath);
+
     }
 
     @Override
     public OutputStream convertByStream(InputStream inputStream) {
-        return super.convertByStream(inputStream);
+        return null;
     }
 
     @Override
     public String convertByBase64(String sourceBase64) {
-        return super.convertByBase64(sourceBase64);
+        return null;
     }
 }
