@@ -14,39 +14,25 @@
   <name>simple-convert</name>
   <url>http://maven.apache.org</url>
 
-  <dependencies>
+  <repositories>
+    <repository>
+      <id>in-project</id>
+      <name>In Project Repo</name>
+      <url>file://${project.basedir}/libs</url>
+    </repository>
+  </repositories>
 
-    <!-- 获取html并替换内容 -->
+  <dependencies>
     <dependency>
-      <groupId>org.jsoup</groupId>
-      <artifactId>jsoup</artifactId>
-      <version>1.6.3</version>
-    </dependency>
-    <!-- html转PDF -->
-    <dependency>
-      <groupId>com.itextpdf</groupId>
-      <artifactId>kernel</artifactId>
-      <version>7.1.1</version>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.7</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.itextpdf</groupId>
-      <artifactId>layout</artifactId>
-      <version>7.1.1</version>
-    </dependency>
-    <dependency>
-      <groupId>com.itextpdf</groupId>
-      <artifactId>html2pdf</artifactId>
-      <version>2.0.1</version>
-    </dependency>
-    <dependency>
-      <groupId>com.liumapp.qtools.file</groupId>
-      <artifactId>qtools-file</artifactId>
-      <version>v1.3.7</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi</artifactId>
-      <version>3.17</version>
+      <groupId>com.aspose.words</groupId>
+      <artifactId>aspose-words</artifactId>
+      <version>15.8.0</version>
     </dependency>
   </dependencies>
 
