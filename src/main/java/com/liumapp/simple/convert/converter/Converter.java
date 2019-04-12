@@ -18,4 +18,8 @@ public interface Converter {
      */
     public void checkLicense() throws CheckLicenseFailedException;
 
+    public void beforeConvert();
+
+    public void afterConvert();
+
 }

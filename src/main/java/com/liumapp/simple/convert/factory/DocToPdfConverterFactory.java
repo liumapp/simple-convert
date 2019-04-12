@@ -2,11 +2,12 @@ package com.liumapp.simple.convert.factory;
 
 import com.liumapp.simple.convert.converter.Converter;
 import com.liumapp.simple.convert.converter.DocToPdfConverter;
+import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 
 public class DocToPdfConverterFactory extends ConverterFactory {
 
     @Override
-    public Converter getInstance() {
+    public Converter getInstance() throws CheckLicenseFailedException {
         if (this.converter == null) {
             return new DocToPdfConverter();
         } else {

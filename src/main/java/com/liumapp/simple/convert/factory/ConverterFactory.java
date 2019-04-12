@@ -1,6 +1,7 @@
 package com.liumapp.simple.convert.factory;
 
 import com.liumapp.simple.convert.converter.Converter;
+import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 
 /**
  * file ConverterFactory.java
@@ -14,6 +15,6 @@ public abstract class ConverterFactory {
 
     protected Converter converter;
 
-    public abstract Converter getInstance();
+    public abstract Converter getInstance() throws CheckLicenseFailedException;
 
 }

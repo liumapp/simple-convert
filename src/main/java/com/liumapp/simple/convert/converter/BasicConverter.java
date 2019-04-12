@@ -5,6 +5,7 @@ import com.aspose.words.DocumentBuilder;
 import com.aspose.words.License;
 import com.aspose.words.SaveFormat;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
+import com.liumapp.simple.convert.exceptions.ConvertFailedException;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,25 +36,36 @@ public abstract class BasicConverter implements Converter {
         }
     }
 
+    BasicConverter() throws CheckLicenseFailedException {
+        checkLicense();
+    }
+
     /**
      * 根据文档的地址进行转换
      * @param sourcePath 要转换的文档地址
      * @param destPath 转换后的文档地址
      */
-    public abstract void convertByFilePath (String sourcePath, String destPath);
+    public abstract void convertByFilePath (String sourcePath, String destPath) throws ConvertFailedException;
 
     /**
      * 根据流进行转换
      * @param inputStream 文档输入流
      * @return 转换结果的文档输出流
      */
-    public abstract OutputStream convertByStream (InputStream inputStream);
+    public abstract OutputStream convertByStream (InputStream inputStream) throws ConvertFailedException;
 
     /**
      * 根据base64进行转换
      * @param sourceBase64 文档输入base64
      * @return 转换结果的base64
      */
-    public abstract String convertByBase64 (String sourceBase64);
+    public abstract String convertByBase64 (String sourceBase64) throws ConvertFailedException;
 
+    public void beforeConvert() {
+        // do anything you like before convert
+    }
+
+    public void afterConvert() {
+        // do anything you like after convert
+    }
 }
