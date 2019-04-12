@@ -1,5 +1,6 @@
 package com.liumapp.simple.convert.converter;
 
+import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.simple.convert.factory.HtmlToPdfConverterFactory;
 import org.junit.Test;
 
@@ -19,10 +20,13 @@ public class HtmlToPdfConverterTest {
     public void convertByFilePath() {
         Converter converter = new HtmlToPdfConverterFactory().getInstance();
         converter.convertByFilePath(HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath(), "./result.pdf");
+        assertEquals(true, FileTool.isFileExists("./result.pdf"));
+        FileTool.deleteFile("./result.pdf");
     }
 
     @Test
     public void convertByStream() {
+
     }
 
     @Test

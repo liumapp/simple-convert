@@ -27,20 +27,20 @@ public interface Converter {
      * @param sourcePath 要转换的文档地址
      * @param destPath 转换后的文档地址
      */
-    public abstract void convertByFilePath (String sourcePath, String destPath) throws ConvertFailedException;
+    public void convertByFilePath (String sourcePath, String destPath) throws ConvertFailedException;
 
     /**
      * 根据流进行转换
      * @param inputStream 文档输入流
      * @return 转换结果的文档输出流
      */
-    public abstract OutputStream convertByStream (InputStream inputStream) throws ConvertFailedException;
+    public OutputStream convertByStream (InputStream inputStream) throws ConvertFailedException;
 
     /**
      * 根据base64进行转换
      * @param sourceBase64 文档输入base64
      * @return 转换结果的base64
      */
-    public abstract String convertByBase64 (String sourceBase64) throws ConvertFailedException;
+    public String convertByBase64 (String sourceBase64) throws ConvertFailedException;
 
 }
