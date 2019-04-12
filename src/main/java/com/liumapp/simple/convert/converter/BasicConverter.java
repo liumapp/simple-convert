@@ -1,6 +1,8 @@
 package com.liumapp.simple.convert.converter;
 
 import com.aspose.words.License;
+import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
+
 import java.io.InputStream;
 
 /**
@@ -13,7 +15,11 @@ import java.io.InputStream;
  */
 public abstract class BasicConverter implements Converter {
 
-    public boolean checkLicense() {
+    /**
+     * check license info
+     * @return boolean
+     */
+    protected boolean checkLicense() throws CheckLicenseFailedException {
         boolean result = false;
         try {
             InputStream is = BasicConverter.class.getClassLoader().getResourceAsStream("license.xml");
@@ -21,7 +27,7 @@ public abstract class BasicConverter implements Converter {
             aposeLic.setLicense(is);
             result = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new CheckLicenseFailedException();
         }
         return result;
     }

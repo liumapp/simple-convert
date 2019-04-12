@@ -12,6 +12,11 @@ import org.omg.SendingContext.RunTime;
  */
 public class CheckLicenseFailedException extends RuntimeException {
 
+    public CheckLicenseFailedException() {
+        super("校验asponse的license失败，您可能需要在license.xml文件中更换最新的注册信息");
+    }
 
-
+    public CheckLicenseFailedException(String message) {
+        super((message == null || message.length() == 0) ? "校验asponse的license失败，您可能需要在license.xml文件中更换最新的注册信息" : message);
+    }
 }
