@@ -8,7 +8,7 @@ package com.liumapp.simple.convert.converter;
  * homepage http://www.liumapp.com
  * date 2019/4/12
  */
-public abstract class Converter {
+public interface Converter {
 
 
 
