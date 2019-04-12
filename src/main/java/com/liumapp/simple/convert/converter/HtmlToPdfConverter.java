@@ -3,6 +3,7 @@ package com.liumapp.simple.convert.converter;
 import com.aspose.words.Document;
 import com.aspose.words.DocumentBuilder;
 import com.aspose.words.SaveFormat;
+import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.simple.convert.exceptions.ConvertFailedException;
 
 import java.io.File;
@@ -24,11 +25,12 @@ public class HtmlToPdfConverter extends BasicConverter {
     public void convertByFilePath(String sourcePath, String destPath) throws ConvertFailedException {
         beforeConvert();
         try {
-            File file = new File(sourcePath);
+            File file = new File(destPath);
             FileOutputStream os = new FileOutputStream(file);
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
-            builder.insertHtml(destPath);
+            String sourceHtml = FileTool.readFileAsString(sourcePath);
+            builder.insertHtml(sourceHtml);
             doc.save(os, SaveFormat.PDF);
         } catch (Exception e) {
             throw new ConvertFailedException(e.getMessage());
