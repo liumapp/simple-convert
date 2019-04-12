@@ -11,7 +11,7 @@ import java.io.OutputStream;
  * homepage http://www.liumapp.com
  * date 2019/4/12
  */
-public class HtmlToPdfConverter implements Converter {
+public class HtmlToPdfConverter extends BasicConverter {
 
 
     public void convertByFilePath(String sourcePath, String destPath) {
