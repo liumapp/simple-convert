@@ -1,5 +1,8 @@
 package com.liumapp.simple.convert.converter;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+
 /**
  * file HtmlToPdfConverter.java
  * author liumapp
@@ -11,5 +14,15 @@ package com.liumapp.simple.convert.converter;
 public class HtmlToPdfConverter implements Converter {
 
 
+    public void convertByFilePath(String sourcePath, String destPath) {
 
+    }
+
+    public OutputStream convertByStream(InputStream inputStream) {
+        return null;
+    }
+
+    public String convertByBase64(String sourceBase64) {
+        return null;
+    }
 }
