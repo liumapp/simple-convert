@@ -3,8 +3,7 @@
 
 ## 注意事项
 
-* 在pom.xml中，不要使用system scope引入jar包
+* 在pom.xml中，不要使用system scope引入jar包，而要通过在项目设立一个maven本地仓库：repo目录，将所需要的第三方jar包deploy进去（不能直接从maven下载，原因你懂的）
 
     system scope引入的包，在使用jar-with-dependencies打包时将不会被包含，可以使用resources将本地包打进jar-with-dependencies
-    
     
