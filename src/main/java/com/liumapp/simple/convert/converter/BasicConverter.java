@@ -1,8 +1,13 @@
 package com.liumapp.simple.convert.converter;
 
+import com.aspose.words.Document;
+import com.aspose.words.DocumentBuilder;
 import com.aspose.words.License;
+import com.aspose.words.SaveFormat;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -18,30 +23,15 @@ public abstract class BasicConverter implements Converter {
 
     /**
      * check license info
-     * @return boolean
      */
-    protected boolean checkLicense() throws CheckLicenseFailedException {
-        boolean result = false;
+    protected void checkLicense() throws CheckLicenseFailedException {
         try {
             InputStream is = BasicConverter.class.getClassLoader().getResourceAsStream("license.xml");
             License aposeLic = new License();
             aposeLic.setLicense(is);
-            result = true;
         } catch (Exception e) {
             throw new CheckLicenseFailedException();
         }
-        return result;
     }
 
-    public void convertByFilePath(String sourcePath, String destPath) {
-
-    }
-
-    public OutputStream convertByStream(InputStream inputStream) {
-        return null;
-    }
-
-    public String convertByBase64(String sourceBase64) {
-        return null;
-    }
 }
