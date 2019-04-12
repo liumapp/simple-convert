@@ -13,15 +13,18 @@ import java.io.OutputStream;
  */
 public class DocToPdfConverter extends BasicConverter {
 
+    @Override
     public void convertByFilePath(String sourcePath, String destPath) {
-
+        super.convertByFilePath(sourcePath, destPath);
     }
 
+    @Override
     public OutputStream convertByStream(InputStream inputStream) {
-        return null;
+        return super.convertByStream(inputStream);
     }
 
+    @Override
     public String convertByBase64(String sourceBase64) {
-        return null;
+        return super.convertByBase64(sourceBase64);
     }
 }

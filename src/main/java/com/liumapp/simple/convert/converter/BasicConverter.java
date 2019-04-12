@@ -4,6 +4,7 @@ import com.aspose.words.License;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 
 import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * file BasicConverter.java
@@ -31,5 +32,16 @@ public abstract class BasicConverter implements Converter {
         }
         return result;
     }
-    
+
+    public void convertByFilePath(String sourcePath, String destPath) {
+
+    }
+
+    public OutputStream convertByStream(InputStream inputStream) {
+        return null;
+    }
+
+    public String convertByBase64(String sourceBase64) {
+        return null;
+    }
 }
