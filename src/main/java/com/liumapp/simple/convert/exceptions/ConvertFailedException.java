@@ -1,7 +1,5 @@
 package com.liumapp.simple.convert.exceptions;
 
-import org.omg.SendingContext.RunTime;
-
 /**
  * file ConvertFailedException.java
  * author liumapp

@@ -22,7 +22,18 @@ public class HtmlToPdfConverter extends BasicConverter {
 
     @Override
     public void convertByFilePath(String sourcePath, String destPath) throws ConvertFailedException {
-
+        beforeConvert();
+        try {
+            File file = new File(sourcePath);
+            FileOutputStream os = new FileOutputStream(file);
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            builder.insertHtml(destPath);
+            doc.save(os, SaveFormat.PDF);
+        } catch (Exception e) {
+            throw new ConvertFailedException(e.getMessage());
+        }
+        afterConvert();
     }
 
     @Override
