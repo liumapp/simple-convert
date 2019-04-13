@@ -60,7 +60,7 @@ public abstract class BasicConverter implements Converter, DocumentUpdater {
      * @param inputStream 文档输入流
      * @return 转换结果的文档输出流
      */
-    public abstract OutputStream convertByStream (InputStream inputStream) throws ConvertFailedException;
+    public abstract void convertByStream (InputStream inputStream, OutputStream outputStream) throws ConvertFailedException;
 
     /**
      * 根据base64进行转换

@@ -27,8 +27,8 @@ public class DocToPdfConverter extends BasicConverter {
     }
 
     @Override
-    public OutputStream convertByStream(InputStream inputStream) throws ConvertFailedException {
-        return null;
+    public void convertByStream(InputStream inputStream, OutputStream outputStream) throws ConvertFailedException {
+
     }
 
     @Override

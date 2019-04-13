@@ -1,5 +1,6 @@
 package com.liumapp.simple.convert.converter;
 
+import com.aspose.words.PageSetup;
 import com.aspose.words.SaveFormat;
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
@@ -45,10 +46,15 @@ public class HtmlToPdfConverter extends BasicConverter {
     }
 
     @Override
-    public OutputStream convertByStream(InputStream inputStream) throws ConvertFailedException {
+    public void convertByStream(InputStream inputStream, OutputStream outputStream) throws ConvertFailedException {
         beforeConvert();
+        try {
+            builder.insertHtml(FileTool.readFileFromInputStream(inputStream));
+//            doc.
+        } catch (Exception e) {
+
+        }
         afterConvert();
-        return null;
     }
 
     @Override

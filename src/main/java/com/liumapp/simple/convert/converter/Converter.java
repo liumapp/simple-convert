@@ -31,10 +31,10 @@ public interface Converter {
 
     /**
      * 根据流进行转换
+     * 转换结果将直接体现在输入的OutputStream上
      * @param inputStream 文档输入流
-     * @return 转换结果的文档输出流
      */
-    public OutputStream convertByStream (InputStream inputStream) throws ConvertFailedException;
+    public void convertByStream (InputStream inputStream, OutputStream outputStream) throws ConvertFailedException;
 
     /**
      * 根据base64进行转换
