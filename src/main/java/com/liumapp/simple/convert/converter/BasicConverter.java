@@ -23,10 +23,10 @@ public abstract class BasicConverter implements Converter, DocumentUpdater {
 
     protected DocumentBuilder builder;
 
-    /**
-     * check license info
-     */
-    @SuppressWarnings("unchecked")
+        /**
+         * check license info
+         */
+        @SuppressWarnings("unchecked")
     public void checkLicense() throws CheckLicenseFailedException {
         try {
             InputStream is = BasicConverter.class.getClassLoader().getResourceAsStream("license.xml");
@@ -79,7 +79,8 @@ public abstract class BasicConverter implements Converter, DocumentUpdater {
         return this.builder;
     }
 
-    public void initDocuments() {
-
+    public void initDocuments() throws Exception {
+        this.doc = new Document();
+        this.builder = new DocumentBuilder(doc);
     }
 }

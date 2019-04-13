@@ -28,8 +28,7 @@ public class HtmlToPdfConverter extends BasicConverter {
         try {
             File file = new File(destPath);
             FileOutputStream os = new FileOutputStream(file);
-            Document doc = new Document();
-            DocumentBuilder builder = new DocumentBuilder(doc);
+
             String sourceHtml = FileTool.readFileAsString(sourcePath);
             builder.insertHtml(sourceHtml);
             doc.save(os, SaveFormat.PDF);

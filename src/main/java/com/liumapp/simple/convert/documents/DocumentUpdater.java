@@ -20,6 +20,6 @@ public interface DocumentUpdater {
     /**
      * 初始化document及builder
      */
-    public void initDocuments () ;
+    public void initDocuments () throws Exception;
 
 }
