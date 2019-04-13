@@ -7,6 +7,8 @@ import com.liumapp.simple.convert.documents.DocumentUpdater;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 import com.liumapp.simple.convert.exceptions.ConvertFailedException;
 import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,6 +22,8 @@ import java.io.OutputStream;
  * date 2019/4/12
  */
 public abstract class BasicConverter implements Converter, DocumentUpdater {
+
+    private static final Logger logger = LoggerFactory.getLogger(BasicConverter.class);
 
     protected Document doc;
 
@@ -67,10 +71,12 @@ public abstract class BasicConverter implements Converter, DocumentUpdater {
 
     public void beforeConvert() {
         // do anything you like before convert
+        logger.info("开始转换文档");
     }
 
     public void afterConvert() {
         // do anything you like after convert
+        logger.info("文档转换结束");
     }
 
     public Document getDocument() {

@@ -5,6 +5,8 @@ import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 import com.liumapp.simple.convert.exceptions.ConvertFailedException;
 import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,6 +22,8 @@ import java.io.OutputStream;
  * date 2019/4/12
  */
 public class HtmlToPdfConverter extends BasicConverter {
+
+    private static Logger logger = LoggerFactory.getLogger(HtmlToPdfConverter.class);
 
     public HtmlToPdfConverter() throws CheckLicenseFailedException, InitDocumentsFailedException {
         super();
@@ -52,5 +56,15 @@ public class HtmlToPdfConverter extends BasicConverter {
         beforeConvert();
         afterConvert();
         return null;
+    }
+
+    @Override
+    public void beforeConvert() {
+        logger.info("html to pdf converter begin .");
+    }
+
+    @Override
+    public void afterConvert() {
+        logger.info("html to pdf converter done .");
     }
 }

@@ -1,8 +1,12 @@
 package com.liumapp.simple.convert.converter;
 
 import com.liumapp.qtools.file.basic.FileTool;
+import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
+import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
 import com.liumapp.simple.convert.factory.HtmlToPdfConverterFactory;
 import org.junit.Test;
+
+import java.io.File;
 
 import static org.junit.Assert.*;
 
@@ -17,11 +21,10 @@ import static org.junit.Assert.*;
 public class HtmlToPdfConverterTest {
 
     @Test
-    public void convertByFilePath() {
+    public void convertByFilePath() throws InitDocumentsFailedException, CheckLicenseFailedException {
         Converter converter = new HtmlToPdfConverterFactory().getInstance();
         converter.convertByFilePath(HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath(), "./result.pdf");
         assertEquals(true, FileTool.isFileExists("./result.pdf"));
-        FileTool.deleteFile("./result.pdf");
     }
 
     @Test
