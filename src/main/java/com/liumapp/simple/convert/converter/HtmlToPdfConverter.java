@@ -1,8 +1,5 @@
 package com.liumapp.simple.convert.converter;
 
-import com.aspose.words.Document;
-import com.aspose.words.DocumentBuilder;
-import com.aspose.words.PageSetup;
 import com.aspose.words.SaveFormat;
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
@@ -34,7 +31,6 @@ public class HtmlToPdfConverter extends BasicConverter {
         try {
             File file = new File(destPath);
             FileOutputStream os = new FileOutputStream(file);
-
             String sourceHtml = FileTool.readFileAsString(sourcePath);
             builder.insertHtml(sourceHtml);
             doc.save(os, SaveFormat.PDF);
