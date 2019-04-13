@@ -6,7 +6,7 @@ import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
 import com.liumapp.simple.convert.factory.HtmlToPdfConverterFactory;
 import org.junit.Test;
 
-import java.io.File;
+import java.io.*;
 
 import static org.junit.Assert.*;
 
@@ -28,11 +28,20 @@ public class HtmlToPdfConverterTest {
     }
 
     @Test
-    public void convertByStream() {
-
+    public void convertByStream() throws InitDocumentsFailedException, IOException {
+        Converter converter = new HtmlToPdfConverterFactory().getInstance();
+        String targetFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
+        InputStream is = new FileInputStream(targetFilePath);
+        OutputStream os = new FileOutputStream(new File("./result2.pdf"));
+        converter.convertByStream(is, os);
+        os.flush();
+        is.close();
+        os.close();
+        assertEquals(true, FileTool.isFileExists("./result2.pdf"));
     }
 
     @Test
     public void convertByBase64() {
+
     }
 }
