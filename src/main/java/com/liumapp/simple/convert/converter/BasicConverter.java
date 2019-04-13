@@ -22,6 +22,10 @@ import java.io.OutputStream;
  */
 public abstract class BasicConverter implements Converter {
 
+    protected Document doc;
+
+    protected DocumentBuilder builder;
+
     /**
      * check license info
      */

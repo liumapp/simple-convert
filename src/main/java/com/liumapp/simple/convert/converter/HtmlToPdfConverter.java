@@ -2,6 +2,7 @@ package com.liumapp.simple.convert.converter;
 
 import com.aspose.words.Document;
 import com.aspose.words.DocumentBuilder;
+import com.aspose.words.PageSetup;
 import com.aspose.words.SaveFormat;
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.simple.convert.exceptions.ConvertFailedException;
@@ -41,7 +42,6 @@ public class HtmlToPdfConverter extends BasicConverter {
     @Override
     public OutputStream convertByStream(InputStream inputStream) throws ConvertFailedException {
         beforeConvert();
-
         afterConvert();
         return null;
     }
