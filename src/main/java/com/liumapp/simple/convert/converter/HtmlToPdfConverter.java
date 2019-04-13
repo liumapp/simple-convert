@@ -5,7 +5,9 @@ import com.aspose.words.DocumentBuilder;
 import com.aspose.words.PageSetup;
 import com.aspose.words.SaveFormat;
 import com.liumapp.qtools.file.basic.FileTool;
+import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 import com.liumapp.simple.convert.exceptions.ConvertFailedException;
+import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,6 +23,10 @@ import java.io.OutputStream;
  * date 2019/4/12
  */
 public class HtmlToPdfConverter extends BasicConverter {
+
+    public HtmlToPdfConverter() throws CheckLicenseFailedException, InitDocumentsFailedException {
+        super();
+    }
 
     @Override
     public void convertByFilePath(String sourcePath, String destPath) throws ConvertFailedException {
