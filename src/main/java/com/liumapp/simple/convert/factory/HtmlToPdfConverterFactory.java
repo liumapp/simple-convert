@@ -3,6 +3,7 @@ package com.liumapp.simple.convert.factory;
 import com.liumapp.simple.convert.converter.Converter;
 import com.liumapp.simple.convert.converter.HtmlToPdfConverter;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
+import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
 
 /**
  * file HtmlToPdfConverterFactory.java
@@ -15,7 +16,7 @@ import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 public class HtmlToPdfConverterFactory extends ConverterFactory {
 
     @Override
-    public Converter getInstance() throws CheckLicenseFailedException {
+    public Converter getInstance() throws CheckLicenseFailedException, InitDocumentsFailedException {
         if (this.converter == null) {
             return new HtmlToPdfConverter();
         } else {
