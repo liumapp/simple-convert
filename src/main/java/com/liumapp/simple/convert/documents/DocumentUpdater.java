@@ -2,6 +2,7 @@ package com.liumapp.simple.convert.documents;
 
 import com.aspose.words.Document;
 import com.aspose.words.DocumentBuilder;
+import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
 
 /**
  * file DocumentUpdater.java
@@ -20,6 +21,6 @@ public interface DocumentUpdater {
     /**
      * 初始化document及builder
      */
-    public void initDocuments () throws Exception;
+    public void initDocuments () throws InitDocumentsFailedException;
 
 }

@@ -6,6 +6,8 @@ import com.aspose.words.License;
 import com.liumapp.simple.convert.documents.DocumentUpdater;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 import com.liumapp.simple.convert.exceptions.ConvertFailedException;
+import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -37,7 +39,7 @@ public abstract class BasicConverter implements Converter, DocumentUpdater {
         }
     }
 
-    BasicConverter() throws CheckLicenseFailedException {
+    BasicConverter() throws CheckLicenseFailedException, InitDocumentsFailedException {
         checkLicense();
         initDocuments();
     }
@@ -79,8 +81,13 @@ public abstract class BasicConverter implements Converter, DocumentUpdater {
         return this.builder;
     }
 
-    public void initDocuments() throws Exception {
-        this.doc = new Document();
-        this.builder = new DocumentBuilder(doc);
+    public void initDocuments() throws InitDocumentsFailedException {
+        try {
+            this.doc = new Document();
+            this.builder = new DocumentBuilder(doc);
+        } catch (Exception e) {
+            throw new InitDocumentsFailedException(e.getMessage());
+        }
+
     }
 }
