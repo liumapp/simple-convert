@@ -3,12 +3,9 @@ package com.liumapp.simple.convert.converter;
 import com.aspose.words.Document;
 import com.aspose.words.DocumentBuilder;
 import com.aspose.words.License;
-import com.aspose.words.SaveFormat;
+import com.liumapp.simple.convert.documents.DocumentUpdater;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 import com.liumapp.simple.convert.exceptions.ConvertFailedException;
-
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -20,7 +17,7 @@ import java.io.OutputStream;
  * homepage http://www.liumapp.com
  * date 2019/4/12
  */
-public abstract class BasicConverter implements Converter {
+public abstract class BasicConverter implements Converter, DocumentUpdater {
 
     protected Document doc;
 
@@ -42,6 +39,7 @@ public abstract class BasicConverter implements Converter {
 
     BasicConverter() throws CheckLicenseFailedException {
         checkLicense();
+        initDocuments();
     }
 
     /**
@@ -71,5 +69,17 @@ public abstract class BasicConverter implements Converter {
 
     public void afterConvert() {
         // do anything you like after convert
+    }
+
+    public Document getDocument() {
+        return this.doc;
+    }
+
+    public DocumentBuilder getDocumentBuilder() {
+        return this.builder;
+    }
+
+    public void initDocuments() {
+
     }
 }

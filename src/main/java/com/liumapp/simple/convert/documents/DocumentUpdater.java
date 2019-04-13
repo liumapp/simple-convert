@@ -1,5 +1,8 @@
 package com.liumapp.simple.convert.documents;
 
+import com.aspose.words.Document;
+import com.aspose.words.DocumentBuilder;
+
 /**
  * file DocumentUpdater.java
  * author liumapp
@@ -9,4 +12,14 @@ package com.liumapp.simple.convert.documents;
  * date 2019/4/13
  */
 public interface DocumentUpdater {
+
+    public Document getDocument ();
+
+    public DocumentBuilder getDocumentBuilder();
+
+    /**
+     * 初始化document及builder
+     */
+    public void initDocuments () ;
+
 }
