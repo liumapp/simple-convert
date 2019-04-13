@@ -8,7 +8,6 @@ import com.liumapp.simple.convert.factory.HtmlToPdfConverterFactory;
 import org.junit.Test;
 
 import java.io.*;
-import java.util.Base64;
 
 import static org.junit.Assert.*;
 
