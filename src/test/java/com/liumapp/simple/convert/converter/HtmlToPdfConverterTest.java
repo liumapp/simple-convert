@@ -41,7 +41,9 @@ public class HtmlToPdfConverterTest {
     }
 
     @Test
-    public void convertByBase64() {
-
+    public void convertByBase64() throws InitDocumentsFailedException {
+        Converter converter = new HtmlToPdfConverterFactory().getInstance();
+        String targetFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
+        
     }
 }

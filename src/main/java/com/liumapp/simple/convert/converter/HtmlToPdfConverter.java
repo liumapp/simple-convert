@@ -1,7 +1,7 @@
 package com.liumapp.simple.convert.converter;
 
-import com.aspose.words.PageSetup;
 import com.aspose.words.SaveFormat;
+import com.liumapp.qtools.file.base64.Base64FileTool;
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 import com.liumapp.simple.convert.exceptions.ConvertFailedException;
@@ -9,10 +9,8 @@ import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.util.Base64;
 
 /**
  * file HtmlToPdfConverter.java
@@ -60,13 +58,16 @@ public class HtmlToPdfConverter extends BasicConverter {
     @Override
     public String convertByBase64(String sourceBase64) throws ConvertFailedException {
         beforeConvert();
+        OutputStream outputStream = new ByteArrayOutputStream();
         try {
-            builder.insertHtml(sourceBase64);
+            builder.insertHtml(Base64.getDecoder().decode(sourceBase64.getBytes()).toString());
+            doc.save(outputStream, SaveFormat.PDF);
         } catch (Exception e) {
             throw new ConvertFailedException(e.getMessage());
         }
+        byte[] result = ((ByteArrayOutputStream) outputStream).toByteArray();
         afterConvert();
-        return null;
+        return Base64.getEncoder().encodeToString(result);
     }
 
     @Override
