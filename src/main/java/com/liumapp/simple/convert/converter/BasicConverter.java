@@ -26,8 +26,6 @@ public abstract class BasicConverter implements Converter {
 
     protected DocumentBuilder builder;
 
-    
-
     /**
      * check license info
      */
