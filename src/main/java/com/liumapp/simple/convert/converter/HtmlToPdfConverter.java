@@ -40,11 +40,16 @@ public class HtmlToPdfConverter extends BasicConverter {
 
     @Override
     public OutputStream convertByStream(InputStream inputStream) throws ConvertFailedException {
+        beforeConvert();
+
+        afterConvert();
         return null;
     }
 
     @Override
     public String convertByBase64(String sourceBase64) throws ConvertFailedException {
+        beforeConvert();
+        afterConvert();
         return null;
     }
 }
