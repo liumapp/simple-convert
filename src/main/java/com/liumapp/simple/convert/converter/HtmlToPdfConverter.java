@@ -60,7 +60,8 @@ public class HtmlToPdfConverter extends BasicConverter {
         beforeConvert();
         OutputStream outputStream = new ByteArrayOutputStream();
         try {
-            builder.insertHtml(Base64.getDecoder().decode(sourceBase64.getBytes()).toString());
+            String htmlContents = new String(Base64.getDecoder().decode(sourceBase64));
+            builder.insertHtml(htmlContents);
             doc.save(outputStream, SaveFormat.PDF);
         } catch (Exception e) {
             throw new ConvertFailedException(e.getMessage());

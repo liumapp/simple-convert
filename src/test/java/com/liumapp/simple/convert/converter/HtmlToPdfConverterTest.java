@@ -1,5 +1,6 @@
 package com.liumapp.simple.convert.converter;
 
+import com.liumapp.qtools.file.base64.Base64FileTool;
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
@@ -7,6 +8,7 @@ import com.liumapp.simple.convert.factory.HtmlToPdfConverterFactory;
 import org.junit.Test;
 
 import java.io.*;
+import java.util.Base64;
 
 import static org.junit.Assert.*;
 
@@ -41,9 +43,14 @@ public class HtmlToPdfConverterTest {
     }
 
     @Test
-    public void convertByBase64() throws InitDocumentsFailedException {
+    public void convertByBase64() throws InitDocumentsFailedException, IOException {
         Converter converter = new HtmlToPdfConverterFactory().getInstance();
         String targetFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
-        
+        InputStream is = new FileInputStream(targetFilePath);
+        String inputBase64 = Base64FileTool.inputStreamToBase64(is);
+        String resultBase64 = converter.convertByBase64(inputBase64);
+        is.close();
+        Base64FileTool.saveBase64File(resultBase64, "./result3.pdf");
+        assertEquals(true, FileTool.isFileExists("./result3.pdf"));
     }
 }
