@@ -50,7 +50,7 @@ public class HtmlToPdfConverter extends BasicConverter {
         beforeConvert();
         try {
             builder.insertHtml(FileTool.readFileFromInputStream(inputStream));
-//            doc.
+            doc.save(outputStream, SaveFormat.PDF);
         } catch (Exception e) {
 
         }
