@@ -52,7 +52,7 @@ public class HtmlToPdfConverter extends BasicConverter {
             builder.insertHtml(FileTool.readFileFromInputStream(inputStream));
             doc.save(outputStream, SaveFormat.PDF);
         } catch (Exception e) {
-
+            throw new ConvertFailedException(e.getMessage());
         }
         afterConvert();
     }
@@ -60,6 +60,11 @@ public class HtmlToPdfConverter extends BasicConverter {
     @Override
     public String convertByBase64(String sourceBase64) throws ConvertFailedException {
         beforeConvert();
+        try {
+            builder.insertHtml(sourceBase64);
+        } catch (Exception e) {
+            throw new ConvertFailedException(e.getMessage());
+        }
         afterConvert();
         return null;
     }
