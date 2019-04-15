@@ -1,6 +1,10 @@
 # simple-convert
 简单易用的Java各类文档转换项目，正在开发中，请勿使用
 
+## 如何使用
+
+* 
+
 ## 注意事项
 
 * 在pom.xml中，不要使用system scope引入jar包，而要通过在项目设立一个maven本地仓库：repo目录，将所需要的第三方jar包deploy进去（不能直接从maven下载，原因你懂的）
