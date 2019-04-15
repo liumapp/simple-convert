@@ -45,7 +45,12 @@ public class DocToPdfConverter extends BasicConverter {
     @Override
     public void convertByStream(InputStream inputStream, OutputStream outputStream) throws ConvertFailedException {
         beforeConvert();
-        
+        try {
+            this.doc = new Document(inputStream);
+            this.doc.save(outputStream, SaveFormat.PDF);
+        } catch (Exception e) {
+            throw new ConvertFailedException(e.getMessage());
+        }
         afterConvert();
     }
 
