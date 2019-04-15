@@ -108,6 +108,20 @@
 
 * 所有转换默认是以A4纸作为最终的PDF页面大小，如果要进行更改的话，请直接使用BasicConverter的getDocument和getDocumentBuilder方法，在获取到Document对象或者DocumentBuilder对象后，修改pageSetup的相关属性，具体请参考aspose的[文档](https://apireference.aspose.com/java/words)
 
+    或者直接参考这一段代码：
+    
+    ````java
+        BasicConverter converter = new HtmlToPdfConverterFactory().getInstance();
+        DocumentBuilder builder = converter.getDocumentBuilder();
+        PageSetup pageSetup = builder.getPageSetup();
+        pageSetup.setPageWidth(2000);
+        pageSetup.setPageHeight(100);
+        String htmlFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
+        String pdfResultPath = "./result11.pdf";
+        converter.convertByFilePath(htmlFilePath, pdfResultPath);
+        assertEquals(true, FileTool.isFileExists("./result11.pdf"));
+    ````
+
 
 
 
