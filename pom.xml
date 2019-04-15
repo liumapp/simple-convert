@@ -17,11 +17,13 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
   </properties>
 
   <name>simple-convert</name>
   <url>http://maven.apache.org</url>
+  <description>简单易用的Java各类文档转换项目</description>
 
   <dependencies>
     <dependency>

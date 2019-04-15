@@ -3,7 +3,46 @@
 
 ## 如何使用
 
-* 
+* 使用Maven下载依赖
+    
+    ````mxml
+        <dependency>
+          <groupId>com.liumapp.simple.convert</groupId>
+          <artifactId>simple-convert</artifactId>
+          <version>v1.0.0</version>
+        </dependency>
+    ````
+    
+* 拷贝repo目录到本地项目中，否则会提示找不到aspose的jar包
+
+    当然，您也可以自行将libs目录下的aspose这个jar包部署到自己的nexus私服或者导入maven的本地仓库中
+
+* html转doc
+
+    * 通过文件目录转换
+    
+    ````java
+        Converter converter = new HtmlToPdfConverterFactory().getInstance();
+        String htmlFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
+        String pdfResultPath = "./result.pdf";
+        converter.convertByFilePath(htmlFilePath, pdfResultPath);
+    ````
+    
+        执行后将htmlFilePath所指向的html文件转换为pdf文件，并保存在pdfResultPath路径下
+        
+    * 通过输入流转换
+    
+        
+    
+    * 通过base64转换
+    
+* doc转pdf
+
+    * 通过文件目录转换           
+    
+    * 通过输入流转换  
+
+        
 
 ## 注意事项
 

@@ -24,7 +24,9 @@ public class HtmlToPdfConverterTest {
     @Test
     public void convertByFilePath() throws InitDocumentsFailedException, CheckLicenseFailedException {
         Converter converter = new HtmlToPdfConverterFactory().getInstance();
-        converter.convertByFilePath(HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath(), "./result.pdf");
+        String htmlFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
+        String pdfResultPath = "./result.pdf";
+        converter.convertByFilePath(htmlFilePath, pdfResultPath);
         assertEquals(true, FileTool.isFileExists("./result.pdf"));
     }
 
