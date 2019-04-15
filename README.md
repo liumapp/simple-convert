@@ -21,27 +21,62 @@
 
     * 通过文件目录转换
     
-    ````java
-        Converter converter = new HtmlToPdfConverterFactory().getInstance();
-        String htmlFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
-        String pdfResultPath = "./result.pdf";
-        converter.convertByFilePath(htmlFilePath, pdfResultPath);
-    ````
+        ````java
+            Converter converter = new HtmlToPdfConverterFactory().getInstance();
+            String htmlFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
+            String pdfResultPath = "./result.pdf";
+            converter.convertByFilePath(htmlFilePath, pdfResultPath);
+        ````
     
         执行后将htmlFilePath所指向的html文件转换为pdf文件，并保存在pdfResultPath路径下
         
     * 通过输入流转换
     
+        ````java
+            Converter converter = new HtmlToPdfConverterFactory().getInstance();
+            String targetFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
+            InputStream is = new FileInputStream(targetFilePath);
+            OutputStream os = new FileOutputStream(new File("./result2.pdf"));
+            converter.convertByStream(is, os);
+            os.flush();
+            is.close();
+            os.close();
+        ````
         
+        将要转换的html文件作为输入流输出，输出流为要存储的pdf文件输出流，也可以使用ByteArrayOutputStream暂存在内存中
     
     * 通过base64转换
     
+        ````java
+            Converter converter = new HtmlToPdfConverterFactory().getInstance();
+            String targetFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
+            InputStream is = new FileInputStream(targetFilePath);
+            String inputBase64 = Base64FileTool.inputStreamToBase64(is);
+            String resultBase64 = converter.convertByBase64(inputBase64);
+            is.close();
+        ````
+    
+        inputBase64为html文件的base64值，输出的resultBase64为转换后的pdf base64值
+    
 * doc转pdf
 
-    * 通过文件目录转换           
-    
-    * 通过输入流转换  
+    * 通过文件目录转换 
 
+      ````java
+          Converter converter = new DocToPdfConverterFactory().getInstance();
+          converter.convertByFilePath("./data/test.doc", "./result4.pdf");
+      ````    
+    
+    * 通过输入流转换
+    
+        ````java
+            Converter converter = new DocToPdfConverterFactory().getInstance();
+            FileInputStream is = new FileInputStream("./data/test.doc");
+            FileOutputStream os = new FileOutputStream("./result5.pdf");
+            converter.convertByStream(is, os);
+            is.close();
+            os.close();  
+        ````
         
 
 ## 注意事项
