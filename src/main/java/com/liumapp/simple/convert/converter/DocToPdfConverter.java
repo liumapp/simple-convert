@@ -1,11 +1,15 @@
 package com.liumapp.simple.convert.converter;
 
+import com.aspose.words.Document;
+import com.aspose.words.SaveFormat;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 import com.liumapp.simple.convert.exceptions.ConvertFailedException;
 import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -27,12 +31,22 @@ public class DocToPdfConverter extends BasicConverter {
 
     @Override
     public void convertByFilePath(String sourcePath, String destPath) throws ConvertFailedException {
-
+        beforeConvert();
+        try {
+            FileOutputStream os = new FileOutputStream(new File(destPath));
+            this.doc = new Document(sourcePath);
+            this.doc.save(os, SaveFormat.PDF);
+        } catch (Exception e) {
+            throw new ConvertFailedException(e.getMessage());
+        }
+        afterConvert();
     }
 
     @Override
     public void convertByStream(InputStream inputStream, OutputStream outputStream) throws ConvertFailedException {
-
+        beforeConvert();
+        
+        afterConvert();
     }
 
     @Override
@@ -42,11 +56,11 @@ public class DocToPdfConverter extends BasicConverter {
 
     @Override
     public void beforeConvert() {
-        logger.info("");
+        logger.info("doc to pdf converter begin ...");
     }
 
     @Override
     public void afterConvert() {
-
+        logger.info("doc to pdf converter end ...");
     }
 }
