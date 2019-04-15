@@ -8,10 +8,8 @@ import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.util.Base64;
 
 /**
  * file DocToPdfConverter.java
@@ -54,9 +52,12 @@ public class DocToPdfConverter extends BasicConverter {
         afterConvert();
     }
 
+    /**
+     * todo
+     */
     @Override
     public String convertByBase64(String sourceBase64) throws ConvertFailedException {
-        return null;
+        throw new ConvertFailedException("Doc转PDF暂不支持Base64格式");
     }
 
     @Override
