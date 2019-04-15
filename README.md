@@ -1,5 +1,5 @@
 # simple-convert
-简单易用的Java各类文档转换项目，正在开发中，请勿使用
+基于aspose.word的Java文档转换项目，不需要依赖私服Jar包
 
 ## 如何使用
 
