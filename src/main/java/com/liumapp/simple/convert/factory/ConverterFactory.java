@@ -1,5 +1,6 @@
 package com.liumapp.simple.convert.factory;
 
+import com.liumapp.simple.convert.converter.BasicConverter;
 import com.liumapp.simple.convert.converter.Converter;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
@@ -14,8 +15,8 @@ import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
  */
 public abstract class ConverterFactory {
 
-    protected Converter converter;
+    protected BasicConverter converter;
 
-    public abstract Converter getInstance() throws CheckLicenseFailedException, InitDocumentsFailedException;
+    public abstract BasicConverter getInstance() throws CheckLicenseFailedException, InitDocumentsFailedException;
 
 }

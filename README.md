@@ -22,7 +22,7 @@
     * 通过文件目录转换
     
         ````java
-            Converter converter = new HtmlToPdfConverterFactory().getInstance();
+            BasicConverter converter = new HtmlToPdfConverterFactory().getInstance();
             String htmlFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
             String pdfResultPath = "./result.pdf";
             converter.convertByFilePath(htmlFilePath, pdfResultPath);
@@ -33,7 +33,7 @@
     * 通过输入流转换
     
         ````java
-            Converter converter = new HtmlToPdfConverterFactory().getInstance();
+            BasicConverter converter = new HtmlToPdfConverterFactory().getInstance();
             String targetFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
             InputStream is = new FileInputStream(targetFilePath);
             OutputStream os = new FileOutputStream(new File("./result2.pdf"));
@@ -48,7 +48,7 @@
     * 通过base64转换
     
         ````java
-            Converter converter = new HtmlToPdfConverterFactory().getInstance();
+            BasicConverter converter = new HtmlToPdfConverterFactory().getInstance();
             String targetFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
             InputStream is = new FileInputStream(targetFilePath);
             String inputBase64 = Base64FileTool.inputStreamToBase64(is);
@@ -63,7 +63,7 @@
         同通过base64转换一样，将html字符串加密为base64值，将转换后的base64解密存储即可得到pdf文件
         
         ````java
-             Converter converter = new HtmlToPdfConverterFactory().getInstance();
+             BasicConverter converter = new HtmlToPdfConverterFactory().getInstance();
              String htmlContents = "<h3>你的第一个html转PDF文档出来啦！！</h3>\n" +
                      "<br>\n" +
                      "<div style=\"color: aquamarine\">\n" +
@@ -81,14 +81,14 @@
     * 通过文件目录转换 
 
       ````java
-          Converter converter = new DocToPdfConverterFactory().getInstance();
+          BasicConverter converter = new DocToPdfConverterFactory().getInstance();
           converter.convertByFilePath("./data/test.doc", "./result4.pdf");
       ````    
     
     * 通过输入流转换
     
         ````java
-            Converter converter = new DocToPdfConverterFactory().getInstance();
+            BasicConverter converter = new DocToPdfConverterFactory().getInstance();
             FileInputStream is = new FileInputStream("./data/test.doc");
             FileOutputStream os = new FileOutputStream("./result5.pdf");
             converter.convertByStream(is, os);
@@ -104,6 +104,12 @@
     
     * 关于本地repositor的创建和使用，可以参考 [这里](http://www.liumapp.com/articles/2019/04/12/1555053553824.html)
     
+* html转PDF的功能还不够完善，不能完美支持：html5 + css3
+
+* 所有转换默认是以A4纸作为最终的PDF页面大小，如果要进行更改的话，请直接使用BasicConverter的getDocument和getDocumentBuilder方法，在获取到Document对象或者DocumentBuilder对象后，修改pageSetup的相关属性，具体请参考aspose的[文档](https://apireference.aspose.com/java/words)
+
+
+
 
 
     

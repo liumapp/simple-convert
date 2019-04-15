@@ -24,14 +24,14 @@ public class DocToPdfConverterTest {
 
     @Test
     public void convertByFilePath() throws InitDocumentsFailedException {
-        Converter converter = new DocToPdfConverterFactory().getInstance();
+        BasicConverter converter = new DocToPdfConverterFactory().getInstance();
         converter.convertByFilePath("./data/test.doc", "./result4.pdf");
         assertEquals(true, FileTool.isFileExists("./result4.pdf"));
     }
 
     @Test
     public void convertByStream() throws InitDocumentsFailedException, IOException {
-        Converter converter = new DocToPdfConverterFactory().getInstance();
+        BasicConverter converter = new DocToPdfConverterFactory().getInstance();
         FileInputStream is = new FileInputStream("./data/test.doc");
         FileOutputStream os = new FileOutputStream("./result5.pdf");
         converter.convertByStream(is, os);
