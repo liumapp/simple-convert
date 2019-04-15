@@ -5,6 +5,11 @@ import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
 import com.liumapp.simple.convert.factory.DocToPdfConverterFactory;
 import org.junit.Test;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -25,11 +30,21 @@ public class DocToPdfConverterTest {
     }
 
     @Test
-    public void convertByStream() {
-               
+    public void convertByStream() throws InitDocumentsFailedException, IOException {
+        Converter converter = new DocToPdfConverterFactory().getInstance();
+        FileInputStream is = new FileInputStream("./data/test.doc");
+        FileOutputStream os = new FileOutputStream("./result5.pdf");
+        converter.convertByStream(is, os);
+        is.close();
+        os.close();
+        assertEquals(true, FileTool.isFileExists("./result5.pdf"));
     }
 
+    /**
+     * todo
+     */
     @Test
     public void convertByBase64() {
+        // not supported yet.
     }
 }
