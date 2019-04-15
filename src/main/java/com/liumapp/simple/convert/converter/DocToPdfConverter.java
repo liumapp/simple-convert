@@ -3,6 +3,8 @@ package com.liumapp.simple.convert.converter;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 import com.liumapp.simple.convert.exceptions.ConvertFailedException;
 import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,6 +18,8 @@ import java.io.OutputStream;
  * date 2019/4/12
  */
 public class DocToPdfConverter extends BasicConverter {
+
+    private static Logger logger = LoggerFactory.getLogger(DocToPdfConverter.class);
 
     public DocToPdfConverter() throws CheckLicenseFailedException, InitDocumentsFailedException {
         super();
@@ -34,5 +38,15 @@ public class DocToPdfConverter extends BasicConverter {
     @Override
     public String convertByBase64(String sourceBase64) throws ConvertFailedException {
         return null;
+    }
+
+    @Override
+    public void beforeConvert() {
+        logger.info("");
+    }
+
+    @Override
+    public void afterConvert() {
+
     }
 }
