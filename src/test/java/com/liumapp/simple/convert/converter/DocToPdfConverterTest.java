@@ -1,5 +1,8 @@
 package com.liumapp.simple.convert.converter;
 
+import com.liumapp.qtools.file.basic.FileTool;
+import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
+import com.liumapp.simple.convert.factory.DocToPdfConverterFactory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -15,11 +18,15 @@ import static org.junit.Assert.*;
 public class DocToPdfConverterTest {
 
     @Test
-    public void convertByFilePath() {
+    public void convertByFilePath() throws InitDocumentsFailedException {
+        Converter converter = new DocToPdfConverterFactory().getInstance();
+        converter.convertByFilePath("./data/test.doc", "./result4.pdf");
+        assertEquals(true, FileTool.isFileExists("./result4.pdf"));
     }
 
     @Test
     public void convertByStream() {
+
     }
 
     @Test
