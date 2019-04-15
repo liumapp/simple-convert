@@ -56,7 +56,25 @@
             is.close();
         ````
     
-        inputBase64为html文件的base64值，输出的resultBase64为转换后的pdf base64值
+        inputBase64为html文件内容的base64值，输出的resultBase64为转换后的pdf base64值
+        
+    * 直接传入html字符串转pdf文件
+    
+        同通过base64转换一样，将html字符串加密为base64值，将转换后的base64解密存储即可得到pdf文件
+        
+        ````java
+             Converter converter = new HtmlToPdfConverterFactory().getInstance();
+             String htmlContents = "<h3>你的第一个html转PDF文档出来啦！！</h3>\n" +
+                     "<br>\n" +
+                     "<div style=\"color: aquamarine\">\n" +
+                     "    注意：html5以及css3的支持还不够完善！！！\n" +
+                     "</div>\n";
+             String inputBase64 = Base64.getEncoder().encodeToString(htmlContents.getBytes());
+             String resultBase64 = converter.convertByBase64(inputBase64);
+             Base64FileTool.saveBase64File(resultBase64, "./result10.pdf");
+        ````    
+        
+        Base64FileTool这个类来自于qtools-file依赖    
     
 * doc转pdf
 
@@ -78,7 +96,6 @@
             os.close();  
         ````
         
-
 ## 注意事项
 
 * 在pom.xml中，不要使用system scope引入jar包，而要通过在项目设立一个maven本地仓库：repo目录，将所需要的第三方jar包deploy进去（不能直接从maven下载，原因你懂的）
@@ -87,7 +104,6 @@
     
     * 关于本地repositor的创建和使用，可以参考 [这里](http://www.liumapp.com/articles/2019/04/12/1555053553824.html)
     
-
 
 
     

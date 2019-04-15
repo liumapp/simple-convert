@@ -8,6 +8,7 @@ import com.liumapp.simple.convert.factory.HtmlToPdfConverterFactory;
 import org.junit.Test;
 
 import java.io.*;
+import java.util.Base64;
 
 import static org.junit.Assert.*;
 
@@ -53,5 +54,18 @@ public class HtmlToPdfConverterTest {
         is.close();
         Base64FileTool.saveBase64File(resultBase64, "./result3.pdf");
         assertEquals(true, FileTool.isFileExists("./result3.pdf"));
+    }
+
+    @Test
+    public void convertByHtmlContents () throws InitDocumentsFailedException, IOException {
+        Converter converter = new HtmlToPdfConverterFactory().getInstance();
+        String htmlContents = "<h3>你的第一个html转PDF文档出来啦！！</h3>\n" +
+                "<br>\n" +
+                "<div style=\"color: aquamarine\">\n" +
+                "    注意：html5以及css3的支持还不够完善！！！\n" +
+                "</div>\n";
+        String inputBase64 = Base64.getEncoder().encodeToString(htmlContents.getBytes());
+        String resultBase64 = converter.convertByBase64(inputBase64);
+        Base64FileTool.saveBase64File(resultBase64, "./result10.pdf");
     }
 }

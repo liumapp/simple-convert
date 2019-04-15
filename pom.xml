@@ -25,6 +25,14 @@
   <url>http://maven.apache.org</url>
   <description>简单易用的Java各类文档转换项目</description>
 
+  <developers>
+    <developer>
+      <name>liumapp</name>
+      <email>liumapp.com@gmail.com</email>
+      <url>http://www.liumapp.com</url>
+    </developer>
+  </developers>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
