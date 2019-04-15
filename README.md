@@ -104,7 +104,7 @@
     
     * 关于本地repositor的创建和使用，可以参考 [这里](http://www.liumapp.com/articles/2019/04/12/1555053553824.html)
     
-* html转PDF的功能还不够完善，不能完美支持：html5 + css3
+* html转PDF的功能还不够完善，不能完美支持：html5 + css3（或者说能够完美支持html5 + css3的破解版本还没有出来）
 
 * 所有转换默认是以A4纸作为最终的PDF页面大小，如果要进行更改的话，请直接使用BasicConverter的getDocument和getDocumentBuilder方法，在获取到Document对象或者DocumentBuilder对象后，修改pageSetup的相关属性，具体请参考aspose的[文档](https://apireference.aspose.com/java/words)
 
