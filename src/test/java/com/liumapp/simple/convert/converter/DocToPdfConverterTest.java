@@ -24,7 +24,7 @@ public class DocToPdfConverterTest {
 
     @Test
     public void convertByFilePath() throws InitDocumentsFailedException {
-        BasicConverter converter = new DocToPdfConverterFactory().getInstance();
+        BasicConverter converter = DocToPdfConverterFactory.getInstance();
         converter.convertByFilePath("./data/tmp2.doc", "./result4.pdf");
         assertEquals(true, FileTool.isFileExists("./result4.pdf"));
     }

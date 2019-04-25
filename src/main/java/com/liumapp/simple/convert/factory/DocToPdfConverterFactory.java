@@ -1,6 +1,10 @@
 package com.liumapp.simple.convert.factory;
 
+import com.liumapp.simple.convert.converter.BasicConverter;
 import com.liumapp.simple.convert.converter.DocToPdfConverter;
+import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
+import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
+import org.omg.PortableInterceptor.INACTIVE;
 
 /**
  * file DocToPdfConverterFactory.java
@@ -10,18 +14,26 @@ import com.liumapp.simple.convert.converter.DocToPdfConverter;
  * homepage http://www.liumapp.com
  * date 2019/4/25
  */
-public class DocToPdfConverterFactory {
+public class DocToPdfConverterFactory extends ConverterFactory {
 
-    static {
-        converter = new DocToPdfConverter();
+    private static class DocToPdfConverterFactoryHolder {
+        private static final DocToPdfConverterFactory INSTANCE = new DocToPdfConverterFactory();
     }
 
-//    @Override
-//    public BasicConverter getInstance() throws CheckLicenseFailedException, InitDocumentsFailedException {
-//        if (this.converter == null) {
-//            return new DocToPdfConverter();
-//        } else {
-//            return this.converter;
-//        }
-//    }
+    private DocToPdfConverterFactory() {
+    }
+
+    public static final BasicConverter getInstance() throws InitDocumentsFailedException {
+        return DocToPdfConverterFactoryHolder.INSTANCE.getConverter();
+    }
+
+    @Override
+    public BasicConverter getConverter() throws CheckLicenseFailedException, InitDocumentsFailedException {
+        if (this.basicConverter == null) {
+            return new DocToPdfConverter();
+        } else {
+            return this.basicConverter;
+        }
+    }
+
 }
