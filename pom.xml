@@ -4,7 +4,7 @@
 
   <groupId>com.liumapp.simple.convert</groupId>
   <artifactId>simple-convert</artifactId>
-  <version>v1.0.5</version>
+  <version>v1.0.6</version>
   <packaging>jar</packaging>
 
   <repositories>
