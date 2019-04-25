@@ -16,12 +16,23 @@ import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
  */
 public class HtmlToPdfConverterFactory extends ConverterFactory {
 
+    private static class HtmlToPdfConverterFactoryHolder {
+        private static final HtmlToPdfConverterFactory INSTANCE = new HtmlToPdfConverterFactory();
+    }
+
+    private HtmlToPdfConverterFactory() {
+    }
+
+    public static final BasicConverter getInstance () throws InitDocumentsFailedException {
+        return HtmlToPdfConverterFactoryHolder.INSTANCE.getConverter();
+    }
+
     @Override
-    public BasicConverter getInstance() throws CheckLicenseFailedException, InitDocumentsFailedException {
-        if (this.converter == null) {
+    public BasicConverter getConverter() throws CheckLicenseFailedException, InitDocumentsFailedException {
+        if (this.basicConverter == null) {
             return new HtmlToPdfConverter();
         } else {
-            return this.converter;
+            return this.basicConverter;
         }
     }
 }

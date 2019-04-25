@@ -24,7 +24,7 @@ public class HtmlToPdfConverterTest {
 
     @Test
     public void convertByFilePath() throws InitDocumentsFailedException, CheckLicenseFailedException {
-        BasicConverter converter = new HtmlToPdfConverterFactory().getInstance();
+        BasicConverter converter = HtmlToPdfConverterFactory.getInstance();
         String htmlFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
         String pdfResultPath = "./result.pdf";
         converter.convertByFilePath(htmlFilePath, pdfResultPath);
@@ -33,7 +33,7 @@ public class HtmlToPdfConverterTest {
 
     @Test
     public void convertByStream() throws InitDocumentsFailedException, IOException {
-        BasicConverter converter = new HtmlToPdfConverterFactory().getInstance();
+        BasicConverter converter = HtmlToPdfConverterFactory.getInstance();
         String targetFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
         InputStream is = new FileInputStream(targetFilePath);
         OutputStream os = new FileOutputStream(new File("./result2.pdf"));
@@ -46,7 +46,7 @@ public class HtmlToPdfConverterTest {
 
     @Test
     public void convertByBase64() throws InitDocumentsFailedException, IOException {
-        BasicConverter converter = new HtmlToPdfConverterFactory().getInstance();
+        BasicConverter converter = HtmlToPdfConverterFactory.getInstance();
         String targetFilePath = HtmlToPdfConverterTest.class.getClassLoader().getResource("test.html").getPath();
         InputStream is = new FileInputStream(targetFilePath);
         String inputBase64 = Base64FileTool.inputStreamToBase64(is);
@@ -58,7 +58,7 @@ public class HtmlToPdfConverterTest {
 
     @Test
     public void convertByHtmlContents () throws InitDocumentsFailedException, IOException {
-        BasicConverter converter = new HtmlToPdfConverterFactory().getInstance();
+        BasicConverter converter = HtmlToPdfConverterFactory.getInstance();
         String htmlContents = "<h3>你的第一个html转PDF文档出来啦！！</h3>\n" +
                 "<br>\n" +
                 "<div style=\"color: aquamarine\">\n" +

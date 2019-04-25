@@ -22,7 +22,7 @@ public class ChangePdfSizeTest {
 
     @Test
     public void convertByFilePath() throws InitDocumentsFailedException, CheckLicenseFailedException {
-        BasicConverter converter = new HtmlToPdfConverterFactory().getInstance();
+        BasicConverter converter = HtmlToPdfConverterFactory.getInstance();
         DocumentBuilder builder = converter.getDocumentBuilder();
         PageSetup pageSetup = builder.getPageSetup();
         pageSetup.setPageWidth(2000);

@@ -31,7 +31,7 @@ public class DocToPdfConverterTest {
 
     @Test
     public void convertByStream() throws InitDocumentsFailedException, IOException {
-        BasicConverter converter = new DocToPdfConverterFactory().getInstance();
+        BasicConverter converter = DocToPdfConverterFactory.getInstance();
         FileInputStream is = new FileInputStream("./data/test.doc");
         FileOutputStream os = new FileOutputStream("./result5.pdf");
         converter.convertByStream(is, os);
