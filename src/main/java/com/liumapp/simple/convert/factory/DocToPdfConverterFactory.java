@@ -1,7 +1,6 @@
 package com.liumapp.simple.convert.factory;
 
 import com.liumapp.simple.convert.converter.BasicConverter;
-import com.liumapp.simple.convert.converter.Converter;
 import com.liumapp.simple.convert.converter.DocToPdfConverter;
 import com.liumapp.simple.convert.exceptions.CheckLicenseFailedException;
 import com.liumapp.simple.convert.exceptions.InitDocumentsFailedException;
