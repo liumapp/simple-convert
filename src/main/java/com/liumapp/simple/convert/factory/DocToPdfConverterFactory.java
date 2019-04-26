@@ -30,7 +30,8 @@ public class DocToPdfConverterFactory extends ConverterFactory {
     @Override
     public BasicConverter getConverter() throws CheckLicenseFailedException, InitDocumentsFailedException {
         if (this.basicConverter == null) {
-            return new DocToPdfConverter();
+            this.basicConverter = new DocToPdfConverter();
+            return this.basicConverter;
         } else {
             return this.basicConverter;
         }

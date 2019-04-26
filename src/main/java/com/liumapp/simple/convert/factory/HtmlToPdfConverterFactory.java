@@ -30,7 +30,8 @@ public class HtmlToPdfConverterFactory extends ConverterFactory {
     @Override
     public BasicConverter getConverter() throws CheckLicenseFailedException, InitDocumentsFailedException {
         if (this.basicConverter == null) {
-            return new HtmlToPdfConverter();
+            this.basicConverter = new HtmlToPdfConverter();
+            return this.basicConverter;
         } else {
             return this.basicConverter;
         }
